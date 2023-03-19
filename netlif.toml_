@@ -1,23 +1,18 @@
-# example netlify.toml
 [build]
-command = "hugo -gc --minify"
-functions = "netlify/functions"
 publish = "public"
-
-[build.environment]
-HUGO_VERSION = "0.101.0"
+command = "hugo --gc --minify"
 
 [context.production.environment]
-HUGO_ENABLEGITINFO = "true"
-HUGO_ENV = "production"
 HUGO_VERSION = "0.111.3"
+HUGO_ENV = "production"
+HUGO_ENABLEGITINFO = "true"
 
 [context.split1]
 command = "hugo --gc --minify --enableGitInfo"
 
 [context.split1.environment]
-HUGO_ENV = "production"
 HUGO_VERSION = "0.111.3"
+HUGO_ENV = "production"
 
 [context.deploy-preview]
 command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
@@ -36,14 +31,5 @@ HUGO_ENABLEGITINFO = "true"
 
 [[redirects]]
 from = "/npmjs/*"
-status = 200
 to = "/npmjs/"
-
-[[plugins]]
-package = "netlify-plugin-cypress"
-
-[plugins.inputs.postBuild]
-enable = true
-
-[plugins.inputs]
-enable = false
+status = 200
